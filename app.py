@@ -1,4 +1,4 @@
-import streamlit as st
+ import streamlit as st
 import time
 import pandas as pd
 
@@ -35,7 +35,7 @@ if "loaded" not in st.session_state:
 # ----------------- PAGE 1: SPLASH / LANDING PAGE -----------------
 if not st.session_state.loaded:
     st.markdown('<div class="main-box">', unsafe_allow_html=True)
-    st.markdown("<h1 style='font-size: 80px; margin: 0;'>⚜️</h1>", unsafe_transform=True)
+    st.markdown("<h1 style='font-size: 80px; margin: 0;'>⚜️</h1>", unsafe_allow_html=True)
     st.markdown("<h1 class='main-title'>Welcome to Swet Finserve</h1>", unsafe_allow_html=True)
     st.markdown("<p class='subtitle'>Finance & Insurance Consultancy Services</p>", unsafe_allow_html=True)
     st.markdown("<hr style='border-top: 1px solid #d4af37;'>", unsafe_allow_html=True)
@@ -54,7 +54,7 @@ if not st.session_state.loaded:
     progress_bar = st.progress(0)
     
     for percent in range(100):
-        time.sleep(0.05) # Speed slightly optimized for testing
+        time.sleep(0.05) 
         progress_bar.progress(percent + 1)
         if percent < 30: loading_text.markdown("<center><b style='color:#786200;'>Securing Financial Modules...</b></center>", unsafe_allow_html=True)
         elif percent < 70: loading_text.markdown("<center><b style='color:#786200;'>Connecting Swet Finserve Database...</b></center>", unsafe_allow_html=True)
@@ -113,7 +113,7 @@ else:
         # --- DATA DEKHNE KE LIYE TABLE ---
         st.markdown("<br><h4 style='color:#786200;'>📊 Live Transaction Report</h4>", unsafe_allow_html=True)
         if st.session_state.accounts_list:
-            df_acc = pd.DataFrame(st.session_state.accounts_list)
+            df_acc = pd.DataFrame(st.accounts_list)
             st.dataframe(df_acc, use_container_width=True, hide_index=True)
             
             # Auto-Calculation
@@ -140,4 +140,4 @@ else:
         st.text_area("Change Address:", value="Office No. S – 6, 2nd Floor, Radheshyam Chamber...")
         if st.button("Save New Settings"): st.success("Details updated instantly!")
 
-    st.markdown("<br><hr><center class='footer-links'>Connect with us: <a href='https://facebook.com' target='_blank'>Facebook</a> | <a href='https://linkedin.com' target='_blank'>LinkedIn</a> | <a href='https://twitter.com' target='_blank'>Twitter</a></center>", unsafe_allow_html=True)
+    st.markdown("<br><hr><center class='footer-links'>Connect with us: <a href='https://facebook.com' target='_blank'>Facebook</a> | <a href='https://linkedin.com' target='_blank'>LinkedIn</a> | <a href='https://twitter.com' target='_blank'>Twitter</a></center>", unsafe_allow_html=True)   
