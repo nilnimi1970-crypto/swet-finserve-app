@@ -13,107 +13,110 @@ if "customers_list" not in st.session_state:
 if "accounts_list" not in st.session_state:
     st.session_state.accounts_list = []
 
-# ----------------- PAGE 1: PREMIUM HTML/CSS/JS SPLASH PAGE -----------------
+# Custom HTML/CSS Styling (Golden & Yellow Luxury Theme)
+st.markdown("""
+    <style>
+    .stApp { background-color: #fffbeb; }
+    [data-testid="stHeader"] { display: none; }
+    div.block-container { padding-top: 2rem; }
+    
+    /* Premium Card Design */
+    .luxury-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 40px 30px;
+        text-align: center;
+        box-shadow: 0px 10px 30px rgba(212, 175, 55, 0.15);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        max-width: 600px;
+        margin: auto;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Big Elegant Logo Animation */
+    .luxury-logo {
+        font-size: 90px;
+        color: #d4af37;
+        margin-bottom: 10px;
+        animation: pulse 2s infinite ease-in-out;
+    }
+    
+    /* Main Typography */
+    .main-title {
+        color: #3a2e00;
+        font-size: 32px;
+        font-weight: 700;
+        margin: 10px 0 5px 0;
+        letter-spacing: 0.5px;
+    }
+    .tagline {
+        color: #8a6d00;
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+    }
+    
+    /* Divider */
+    .gold-line {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        margin: 20px auto;
+    }
+    
+    /* Info Details */
+    .info-text {
+        color: #4a4a4a;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+    .contact-highlight {
+        color: #b89214;
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+    
+    /* Social Media Icons Styling */
+    .social-footer {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #f2ebcc;
+    }
+    .social-text {
+        font-size: 12px;
+        color: #8a6d00;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+    }
+    .social-links a {
+        color: #b89214;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 12px;
+        font-size: 15px;
+        transition: color 0.3s;
+    }
+    .social-links a:hover {
+        color: #3a2e00;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# ----------------- PAGE 1: PURE LOADING SPLASH SCREEN -----------------
 if not st.session_state.loaded:
-    # Full Screen Light Golden Luxury Theme Blank styling for Streamlit elements
+    # Isme sirf Welcome content aur Progress Bar dikhega, text links nahi dikhenge!
     st.markdown("""
-        <style>
-        .stApp { background-color: #fffbeb; }
-        [data-testid="stHeader"] { display: none; }
-        div.block-container { padding-top: 2rem; }
-        
-        /* Premium Card Design */
-        .luxury-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0px 10px 30px rgba(212, 175, 55, 0.15);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            max-width: 600px;
-            margin: auto;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        /* Big Elegant Logo Animation */
-        .luxury-logo {
-            font-size: 90px;
-            color: #d4af37;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite ease-in-out;
-        }
-        
-        /* Main Typography */
-        .main-title {
-            color: #3a2e00;
-            font-size: 32px;
-            font-weight: 700;
-            margin: 10px 0 5px 0;
-            letter-spacing: 0.5px;
-        }
-        .tagline {
-            color: #8a6d00;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 25px;
-        }
-        
-        /* Divider */
-        .gold-line {
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, transparent);
-            margin: 20px auto;
-        }
-        
-        /* Info Details */
-        .info-text {
-            color: #4a4a4a;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .contact-highlight {
-            color: #b89214;
-            font-weight: 600;
-            font-size: 14px;
-            margin-top: 15px;
-        }
-        
-        /* Social Media Icons Styling */
-        .social-footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #f2ebcc;
-        }
-        .social-text {
-            font-size: 12px;
-            color: #8a6d00;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .social-links a {
-            color: #b89214;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 0 12px;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-        .social-links a:hover {
-            color: #3a2e00;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        </style>
-        
         <div class="luxury-card">
             <div class="luxury-logo">⚜️</div>
             <div class="main-title">Welcome to Swet Finserve</div>
@@ -126,26 +129,16 @@ if not st.session_state.loaded:
             <div class="contact-highlight">
                 📞 +91 9429965252 &nbsp;|&nbsp; ✉️ swetfinserve@gmail.com
             </div>
-            
-            <div class="social-footer">
-                <div class="social-text">Connect With Us</div>
-                <div class="social-links">
-                    <a href="https://facebook.com" target="_blank">Facebook</a>
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-                    <a href="https://twitter.com" target="_blank">Twitter</a>
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                </div>
-            </div>
         </div>
     """, unsafe_allow_html=True)
     
-    # 10-Second JavaScript Styled Progress Bar Tracker
+    # 10-Second Tracker
     st.write("")
     status_label = st.empty()
     progress_ui = st.progress(0)
     
     for p in range(100):
-        time.sleep(0.1) # 100 * 0.1s = Exact 10 Seconds Progress Bar
+        time.sleep(0.1) # Pure 10 Seconds
         progress_ui.progress(p + 1)
         if p < 30:
             status_label.markdown("<center><span style='color:#8a6d00; font-weight:600; font-size:14px;'>🔒 Securing Financial Modules...</span></center>", unsafe_allow_html=True)
@@ -159,10 +152,8 @@ if not st.session_state.loaded:
 
 # ----------------- PAGE 2: MAIN ADVANCED DASHBOARD -----------------
 else:
-    # Custom styling for dashboard
     st.markdown("""
         <style>
-        .stApp { background-color: #fffbeb; }
         h2 { color: #3a2e00 !important; font-weight: 700; }
         .stButton>button { background-color: #d4af37 !important; color: white !important; border-radius: 8px !important; border: none !important; font-weight: bold; }
         .stButton>button:hover { background-color: #3a2e00 !important; }
@@ -219,7 +210,6 @@ else:
             df_acc = pd.DataFrame(st.session_state.accounts_list)
             st.dataframe(df_acc, use_container_width=True, hide_index=True)
             
-            # Calculations
             t_income = sum(i["Amount (Rs)"] for i in st.session_state.accounts_list if "Income" in i["Type"])
             t_expense = sum(i["Amount (Rs)"] for i in st.session_state.accounts_list if "Expense" in i["Type"])
             net_bal = t_income - t_expense
@@ -243,4 +233,16 @@ else:
         if st.button("Update Configuration"): 
             st.success("System configurations updated instantly across the cloud!")
 
-    st.markdown("<br><hr style='border-top:1px solid #f2ebcc;'><center style='font-size:12px; color:#8a6d00;'>Swet Finserve Premium Cloud Application Dashboard</center>", unsafe_allow_html=True)
+    # Social Media Links Dashboard ke sabse neeche hamesha dikhenge
+    st.markdown("""
+        <div class="social-footer" style="text-align:center;">
+            <div class="social-text">Connect With Us</div>
+            <div class="social-links">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+        </div>
+        <br><center style='font-size:12px; color:#8a6d00;'>Swet Finserve Premium Cloud Application Dashboard</center>
+    """, unsafe_allow_html=True)
